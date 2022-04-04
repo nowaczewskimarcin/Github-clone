@@ -1,10 +1,11 @@
 <template>
-        <div class="container relative" style="padding: 5%">
+          <div class="container relative" style="padding: 5%;
+        margin-top: 20px;">
           <h2 class="title">Get GitHub Repositories</h2>
           <h3 class="subtitle">using Vue JS, REST API</h3>
           <h4 class="subtitle">Get any user repositories list</h4>
 
-          <q-input bg-color="deep-purple-4" v-model="inputUser" rounded outlined label="enter user which you want find repos" />
+          <q-input bg-color="deep-purple-4" v-model="inputUser" style=" margin-top: 20px;" rounded outlined label="enter user which you want find repos" />
 
            <button @click="searchRepo"
            class="button center"

@@ -3,8 +3,10 @@
     <q-header elevated style="background-color: #000080; background: linear-gradient(90deg, rgba(2,0,36,1) 3%, rgba(8,8,108,1) 18%, rgba(9,9,121,1) 85%, rgba(158,0,255,1) 117%); color: white;">
       <q-toolbar>
         <q-tabs align="left">
-        
-        <q-route-tab to="/Repositories" label="Search user Repositories" />
+
+         <q-route-tab to="/" label="Home" />
+        <q-route-tab to="/Repositories" label="Search user repositories" />
+        <q-route-tab to="/SearchUser" label="Search any user" />
         <!-- <input rounded outlined v-model="text" style="background-color:  #d1d1d1; border: none; color: white" placeholder="Search Github" /> -->
 
      

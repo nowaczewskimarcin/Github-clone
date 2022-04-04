@@ -6,7 +6,7 @@
   font-weight: 900">Where the world builds software</h2>
         <h5 style="color: #8193b2; font-weight: 900" >Milions of developers and companies build, ship, and maintain their software on GitHub—the largest and most advanced development platform in the world.</h5>
  
- <div class="srodek" style="
+ <div class="center" style="
  padding: 15px;
  margin-left: 20px;">
 
@@ -52,7 +52,7 @@ export default defineComponent({
   border-style: dotted;
 }
 
-.srodek {
+.center {
   display: flex;
   justify-content: space-between;
   padding: 10px;
