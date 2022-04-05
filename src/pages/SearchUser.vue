@@ -1,5 +1,5 @@
 <template style="color: white">
-  <div class="fit row inline wrap items-center justify-center ">
+  <div class="fit row inline wrap items-center justify-center">
     <div style="padding: 4%;">
       <h2 class="title">Get GitHub user</h2>
       <h3 class="subtitle">using Vue JS, REST API</h3>
@@ -8,7 +8,7 @@
 
     <div>
       <q-input
-       :rules="[ val => val.length >= 3 || 'Please use minimum 3 characters']"
+        :rules="[val => val.length >= 3 || 'Please use minimum 3 characters']"
         style=" margin-top: 0; width: 350px;"
         v-model="inputUser"
         rounded
@@ -17,47 +17,77 @@
       />
 
       <button @click="searchRepo" class="button center">Search</button>
-      
     </div>
   </div>
 
   <div v-show="hideBox">
-    <div  v-bind="user" v-bind:key="user.id">
+    <div v-bind="user" v-bind:key="user.id">
       <div class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card">
           <img v-bind:src="img" />
 
           <q-card-section>
-            <p><strong>Login:</strong> {{ user.login }}</p>
-            <p><strong>User name:</strong> {{ user.name }}</p>
-            <p><strong>Bio:</strong> {{ user.bio }}</p>
+            <p>
+              <strong>Login:</strong>
+              {{ user.login }}
+            </p>
+            <p>
+              <strong>User name:</strong>
+              {{ user.name }}
+            </p>
+            <p>
+              <strong>Bio:</strong>
+              {{ user.bio }}
+            </p>
             <p></p>
-          
 
             <p>
               Link to Github:
-              <a v-bind:href="linkToProfile"  target= "_blank">{{ user.html_url }}</a>
+              <a v-bind:href="linkToProfile" target="_blank">{{ user.html_url }}</a>
             </p>
-            <button class="button center" @click="hide = !hide">{{ hide ? 'Hide' : 'Show'}} More Info</button>
+            <button
+              class="button center"
+              @click="hide = !hide"
+            >{{ hide ? 'Hide' : 'Show' }} More Info</button>
             <div v-show="hide">
-              <p><strong>User ID:</strong> {{ user.id }}</p>
-              <p><strong>Company: </strong>{{ user.company }}</p>
-              <p><strong>Blog:</strong> <a target= "_blank" :href="linkToBlog"> {{ user.blog }}</a></p>
-              <p><strong>Followers: </strong>{{ user.followers }}</p>
-              <p><strong>Following: </strong>{{ user.following }}</p>
-              <p><strong>Location:</strong> {{ user.location }}</p>
-              <p><strong>Email:</strong> {{ user.email }}</p>
-              <p><strong>Last update:</strong> {{ user.updated_at }}</p>
+              <p>
+                <strong>User ID:</strong>
+                {{ user.id }}
+              </p>
+              <p>
+                <strong>Company:</strong>
+                {{ user.company }}
+              </p>
+              <p>
+                <strong>Blog:</strong>
+                <a target="_blank" :href="linkToBlog">{{ user.blog }}</a>
+              </p>
+              <p>
+                <strong>Followers:</strong>
+                {{ user.followers }}
+              </p>
+              <p>
+                <strong>Following:</strong>
+                {{ user.following }}
+              </p>
+              <p>
+                <strong>Location:</strong>
+                {{ user.location }}
+              </p>
+              <p>
+                <strong>Email:</strong>
+                {{ user.email }}
+              </p>
+              <p>
+                <strong>Last update:</strong>
+                {{ user.updated_at }}
+              </p>
             </div>
-       
           </q-card-section>
         </q-card>
-           
       </div>
     </div>
   </div>
-
-  
 </template>
 
 <script>
@@ -108,14 +138,14 @@ body {
   overflow-wrap: break-word;
 }
 .button {
-background-color: #2ea44f;
-color: white;
-height: 50px;
-width: 200px;
-border: 0;
-transition: box-shadow .2s;
-border-radius: 0.375rem;
-text-align: center;
+  background-color: #2ea44f;
+  color: white;
+  height: 50px;
+  width: 200px;
+  border: 0;
+  transition: box-shadow 0.2s;
+  border-radius: 0.375rem;
+  text-align: center;
 }
 code.table td,
 .table th {
