@@ -33,7 +33,7 @@ export default defineComponent({
   padding: 15px;
   margin: 20px auto;
   border-color: azure;
-  border-style: dotted;
+
 }
 
 .center {
