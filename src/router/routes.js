@@ -5,12 +5,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-       { path: '/', component: () => import('pages/IndexPage.vue') },
-       
-       { path: '/repositories', component: () => import('pages/Repositories.vue') },
-       { path: '/SearchUser', component: () => import('pages/SearchUser.vue') },
-       { path: '/GithubRanking', component: () => import('pages/GithubRanking.vue') },
-    
+      { path: '/', component: () => import('pages/IndexPage.vue') },
+      { path: '/Search', component: () => import('pages/Search.vue') },
     ]
   },
 
