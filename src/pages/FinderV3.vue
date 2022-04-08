@@ -1,6 +1,17 @@
 <template>
     <div class="container relative" style="padding: 5%; margin-top: 10px;">
-        <q-select v-model="selectedValue" :options="optionsOnlyLogin" label="Standout" />
+        <q-select v-model="selectedValue" :options="options" label="Standout">
+            <template v-slot:option="scope">
+                <q-item v-bind="scope.itemProps">
+                    <q-item-section avatar>
+                        <q-avatar>
+                            <img :src="scope.opt.avatar_url" />
+                        </q-avatar>
+                    </q-item-section>
+                    <q-item-section>{{ scope.opt.login }}</q-item-section>
+                </q-item>
+            </template>
+        </q-select>
     </div>
 </template>
 
@@ -23,11 +34,6 @@ export default defineComponent({
 
     },
 
-    computed: {
-        optionsOnlyLogin() {
-            return this.options.map((x) => { return x.login });
-        }
-    }
 
 })
 </script>  
