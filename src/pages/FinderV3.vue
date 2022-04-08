@@ -12,6 +12,7 @@
                 </q-item>
             </template>
         </q-select>
+        {{ selectedValue }}
     </div>
 </template>
 
