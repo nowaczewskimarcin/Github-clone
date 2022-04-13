@@ -51,16 +51,16 @@ export default defineComponent({
 
         // },
 
-        props: {
-            login: {
-                required: true,
-                type: String,
-            },
-            repos: {
-                required: true,
-                type: Object,
-            }
-        },
+        // props: {
+        //     login: {
+        //         required: true,
+        //         type: String,
+        //     },
+        //     repoId: {
+        //         required: true,
+        //         type: Number,
+        //     }
+        // },
         // watch: {
         //     login: {
         //         immediate: true,

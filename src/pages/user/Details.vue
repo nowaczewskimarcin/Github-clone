@@ -35,7 +35,7 @@
             </q-card>
 
             <q-card>
-                <Q-CARD-SECTION v-show="hideRepo">
+                <q-card-section v-show="hideRepo">
                     <q-dialog v-model="showDialog" color="primary" full-width>
                         <q-card>
                             <q-card-section style="max-height: 50vh" class="scroll">
@@ -68,7 +68,7 @@
                                                         color="blue-10"
                                                         icon-right="info"
                                                         label="More info"
-                                                        :to="{ name: 'RepoDetails', props: { id: repo.id, login: login } }"
+                                                        :to="{ name: 'repoDetails', props: { repoId: repo.id, login: login } }"
                                                     />
                                                 </td>
                                             </tr>
@@ -120,7 +120,7 @@
                             </q-card-section>
                         </q-card>
                     </q-dialog>
-                </Q-CARD-SECTION>
+                </q-card-section>
             </q-card>
 
             <q-card class="my-card details" v-show="hide">
@@ -167,7 +167,6 @@
                     </p>
                     <p>
                         <strong>Last update:</strong>
-                        {{ updated_at }}
                     </p>
                     <p>
                         <strong>Link to Github:</strong>
@@ -267,9 +266,9 @@ export default defineComponent({
             required: true,
             type: String,
         },
-        repos: {
+        repoId: {
             required: true,
-            type: Object,
+            type: Number,
         }
     },
     watch: {
