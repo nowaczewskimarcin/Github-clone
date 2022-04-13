@@ -68,7 +68,7 @@
                                                         color="blue-10"
                                                         icon-right="info"
                                                         label="More info"
-                                                        :to="{ name: 'RepoDetails', props: { id: repo.id } }"
+                                                        :to="{ name: 'RepoDetails', props: { id: repo.id, login: login } }"
                                                     />
                                                 </td>
                                             </tr>
