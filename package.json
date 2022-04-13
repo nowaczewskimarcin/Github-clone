@@ -15,6 +15,7 @@
     "bulma": "^0.9.3",
     "core-js": "^3.6.5",
     "git": "^0.1.5",
+    "parse-link-header": "^2.0.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0",

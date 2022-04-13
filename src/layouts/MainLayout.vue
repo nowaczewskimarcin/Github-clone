@@ -7,6 +7,7 @@
       <q-toolbar>
         <q-tabs align="left">
           <q-route-tab to="/" label="Home" />
+          <q-route-tab to="/Test" label="Tests" />
           <q-route-tab to="/Search" label="Search" />
           <q-route-tab to="/FinderV2" label="FinderV2" />
           <q-route-tab to="/FinderV3" label="FinderV3" />

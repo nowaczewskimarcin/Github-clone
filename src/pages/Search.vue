@@ -6,34 +6,28 @@
       class="subtitle"
       style="color: #8193b2; font-weight: 900"
     >Get any user info and repositories list</h5>
- <table v-if="users">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                       <th>Name</th>
-                        <th>URL</th>
-                         <th>Language</th>
-                          <th>Login</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{{ user.id }}</td>
-                      <td>{{ user.name }}</td>
-                      <td>{{ user.html_url }}</td>
-                      <td>{{ user.language }}</td>
-                      <td>{{ user.login }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              <!-- <q-table :rows-per-options="[0]" hide-bottom separator="cell" dense :rows="[
-                {
-                  name: {{ repo.id }}
-                }
-                ]
-    " />-->
-    <q-input
+    <table v-if="users">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Language</th>
+          <th>Login</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.html_url }}</td>
+          <td>{{ user.language }}</td>
+          <td>{{ user.login }}</td>
+        </tr>
+      </tbody>
+    </table>
 
+    <q-input
       v-model="inputUser"
       :rules="[val => val.length >= 3 || 'Please use minimum 3 characters']"
       rounded
@@ -58,15 +52,15 @@
 
             <q-card-section>
               <p>
-                <strong>Login: </strong>
+                <strong>Login:</strong>
                 {{ user.login }}
               </p>
               <p>
-                <strong>User name: </strong>
+                <strong>User name:</strong>
                 {{ user.name }}
               </p>
               <p>
-                <strong>Bio: </strong>
+                <strong>Bio:</strong>
                 {{ user.bio }}
               </p>
               <p></p>
@@ -89,36 +83,35 @@
 
           <div v-show="hide">
             <p>
-              <strong>User ID: </strong>
+              <strong>User ID:</strong>
               {{ user.id }}
             </p>
             <p>
-              <strong>Company: </strong>
+              <strong>Company:</strong>
               {{ user.company }}
             </p>
             <p>
-              <strong>Blog: </strong>
+              <strong>Blog:</strong>
               <a target="_blank" :href="linkToBlog">{{ user.blog }}</a>
             </p>
             <p>
               <q-badge transparent align="middle" color="blue-10">
-        <strong>Followers: </strong>
-               {{ user.followers }}
-                </q-badge> 
-                       </p>
-             <p>
-
-              <q-badge transparent align="middle" color="blue-8">
-        <strong>Following: </strong>
-              {{ user.following }}
-      </q-badge>
-                       </p>
+                <strong>Followers:</strong>
+                {{ user.followers }}
+              </q-badge>
+            </p>
             <p>
-              <strong>Location: </strong>
+              <q-badge transparent align="middle" color="blue-8">
+                <strong>Following:</strong>
+                {{ user.following }}
+              </q-badge>
+            </p>
+            <p>
+              <strong>Location:</strong>
               {{ user.location }}
             </p>
             <p>
-              <strong>Email: </strong>
+              <strong>Email:</strong>
               {{ user.email }}
             </p>
             <p>
@@ -130,24 +123,23 @@
           <q-card-section>
             <div class="container" v-show="hideTable">
               <div class="table-container">
-                      <table style="table-layout: fixed; word-wrap:break-word; column-width: 150px;">
+                <table style="table-layout: fixed; word-wrap:break-word; column-width: 150px;">
                   <thead>
                     <tr>
-                       <th>Repository ID</th>
-                      <th> URL</th>
-                       <th>Repository name</th>
-                       <th>Language</th>
-                       <th>Owner</th>
-
+                      <th>Repository ID</th>
+                      <th>URL</th>
+                      <th>Repository name</th>
+                      <th>Language</th>
+                      <th>Owner</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="repo in repos" :key="id">
-                        <td>{{ repo.id }}</td>
-                        <td>{{ repo.html_url }}</td>
-                         
+                      <td>{{ repo.id }}</td>
+                      <td>{{ repo.html_url }}</td>
+
                       <td>{{ repo.name }}</td>
-                       <td>{{ repo.language }}</td>
+                      <td>{{ repo.language }}</td>
                       <td>{{ repo.owner.login }}</td>
                     </tr>
                   </tbody>
@@ -185,7 +177,7 @@ export default defineComponent({
       img: "",
       linkToProfile: "",
       linkToBlog: "",
-      };
+    };
   },
   methods: {
     searchRepo() {
@@ -246,5 +238,14 @@ img {
   max-width: 100%;
   height: auto;
   background-size: contain;
+}
+.table-container {
+  border: 1px solid black;
+}
+td,
+th {
+  border: 1px solid black;
+  padding: 5px;
+  width: 15%;
 }
 </style>

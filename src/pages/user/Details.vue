@@ -1,30 +1,126 @@
 <template>
-    <div class="container relative" style="padding: 5%; margin-top: 10px;">
+    <div class="container relative" style="padding: 4%;">
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card">
                 <q-card-section>
                     <q-card-section horizontal>
                         <q-img class="col" :src="avatarUser" />
+                        <q-card-actions vertical>
+                            <q-btn
+                                flat
+                                round
+                                bg-color="white"
+                                icon="clear"
+                                @click="goToRepoDetails"
+                            ></q-btn>
+                        </q-card-actions>
                     </q-card-section>
-                    <!-- <q-separator md inset /> -->
+
                     <q-card-section>
                         <div class="text-h6">{{ name }}</div>
-                        <div class="text-subtitle1">{{ login }}</div>
-                        <div class="text-subtitle3">{{ bio }}</div>
+                        <div class="text-subtitle1">login: {{ login }}</div>
+                        <div class="text-subtitle3">
+                            <p v-if="name">About {{ name }}:</p>
+                            <p>{{ bio }}</p>
+                        </div>
                     </q-card-section>
 
                     <q-card-actions align="left">
                         <q-btn @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
-
                         <q-btn flat>
-                            <a target="blank" :href="linkToProfile">
-                                Go
-                                to github
-                            </a>
+                            <a target="_blank" :href="linkToProfile">See on github</a>
                         </q-btn>
                     </q-card-actions>
                 </q-card-section>
-                <Q-CARD-SECTION v-show="hideRepo">dddd</Q-CARD-SECTION>
+            </q-card>
+
+            <q-card>
+                <Q-CARD-SECTION v-show="hideRepo">
+                    <q-dialog v-model="showDialog" color="primary" full-width>
+                        <q-card>
+                            <q-card-section style="max-height: 50vh" class="scroll">
+                                <div class="table-container" v-if="repos">
+                                    <table
+                                        style="table-layout: auto; word-wrap:break-word; column-width: auto;"
+                                    >
+                                        <thead>
+                                            <tr>
+                                                <th>Number</th>
+                                                <!-- <th>Repository ID</th> -->
+                                                <!-- <th>URL</th> -->
+                                                <th>Repository name</th>
+                                                <!-- <th>Language</th>
+                                                <th>Owner</th>-->
+                                                <th>More details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(repo, index) in repos" :key="id">
+                                                <td style="width:auto">{{ index + 1 }}</td>
+                                                <!-- <td>{{ repo.id }}</td> -->
+                                                <!-- <td>{{ repo.html_url }}</td> -->
+
+                                                <td>{{ repo.name }}</td>
+                                                <!-- <td>{{ repo.language }}</td>
+                                                <td>{{ repo.owner.login }}</td>-->
+                                                <td>
+                                                    <q-btn
+                                                        color="blue-10"
+                                                        icon-right="info"
+                                                        label="More info"
+                                                        :to="{ name: 'RepoDetails', props: { id: repo.id } }"
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <q-dialog v-model="showDialogRepo" full-width :key="id">
+                                                <q-card>
+                                                    <q-toolbar>
+                                                        <q-avatar>
+                                                            <img
+                                                                src="https://cdn.quasar.dev/logo-v2/svg/logo.svg"
+                                                            />
+                                                        </q-avatar>
+
+                                                        <span
+                                                            class="text-weight-bold"
+                                                        >Repository name:</span>
+                                                    </q-toolbar>
+
+                                                    <q-card-section>
+                                                        <p>
+                                                            <span
+                                                                class="text-weight-bold"
+                                                            >Last update:</span>
+                                                        </p>
+                                                        <p>Last update:</p>
+                                                        <p>Last update:</p>
+                                                        <p>Last update:</p>
+                                                    </q-card-section>
+
+                                                    <q-btn
+                                                        flat
+                                                        round
+                                                        dense
+                                                        icon="close"
+                                                        v-close-popup
+                                                    />
+
+                                                    <q-card-section>Lorem ipsum dolor sit amet consectema, porro labore.</q-card-section>
+                                                </q-card>
+                                            </q-dialog>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <q-card-actions
+                                    align="left"
+                                >All user public repositories: {{ publicRepos }}</q-card-actions>
+                                <q-card-actions align="right">
+                                    <q-btn flat label="Exit" color v-close-popup />
+                                </q-card-actions>
+                            </q-card-section>
+                        </q-card>
+                    </q-dialog>
+                </Q-CARD-SECTION>
             </q-card>
 
             <q-card class="my-card details" v-show="hide">
@@ -70,11 +166,15 @@
                         {{ linkToBlog }}
                     </p>
                     <p>
+                        <strong>Last update:</strong>
+                        {{ updated_at }}
+                    </p>
+                    <p>
                         <strong>Link to Github:</strong>
 
                         <a :href="linkToProfile" text-color="green" target="_blank">Go to github</a>
                     </p>
-                    <q-btn @click="toggleRepositories">{{ hideRepo ? 'Hide' : 'Show' }} Repositories</q-btn>
+                    <q-btn @click="toggleRepositories">Show Repositories</q-btn>
                 </q-card-section>
             </q-card>
         </div>
@@ -91,6 +191,7 @@ export default defineComponent({
         return ({
             userData: "",
             repos: "",
+            html_url: "",
             avatarUser: "",
             bio: "",
             linkToProfile: "",
@@ -102,18 +203,22 @@ export default defineComponent({
             followers: "",
             following: "",
             publicRepos: "",
+            lastUpdate: "",
+            lastRepoUpdate: "",
+            quantityRepos: "",
             hide: true,
             hideRepo: true,
+            showDialog: false,
+            showDialogRepo: false,
+            nextRepos: "",
 
         })
-
     },
     methods: {
         getUserData() {
             const link = `https://api.github.com/users/${this.login}`;
             // console.log(link)
             axios.get(link).then((response) => {
-                // console.log(response)
                 this.userData = response.data;
                 this.avatarUser = response.data.avatar_url;
                 this.bio = response.data.bio;
@@ -128,25 +233,33 @@ export default defineComponent({
                 this.publicRepos = response.data.public_repos;
                 this.hide = false;
                 this.hideRepo = false;
+                this.showDialogRepo = false;
                 // console.log(response.data)
+
                 // GET repo data 
-                const link = `https://api.github.com/users/${this.login}/repos`;
-                axios.get(link).then((response) => {
+                const linkRepo = `https://api.github.com/users/${this.login}/repos?per_page=100`;
+                axios.get(linkRepo).then((response) => {
                     this.repos = response.data;
-                    // console.log('aaa' + this.repos.data)
-                    // console.log(this.repos)
                     console.log(response.data)
 
                 });
             });
         },
-
         toggleDetails() {
             this.hide = !this.hide;
         },
         toggleRepositories() {
-            this.hideRepo = !this.hideRepo;
+            this.showDialog = true;
         },
+        toggleRepositoriesDetails() {
+            this.showDialogRepo = true;
+        },
+        backToSearch() {
+            this.$router.push({ name: '/FinderV3' })
+        },
+        goToRepoDetails() {
+            this.$router.push({ name: 'RepoDetailsView', props: { id: repo.id } })
+        }
     },
 
     props: {
@@ -165,18 +278,18 @@ export default defineComponent({
             handler() {
                 // console.log(this.getUserData())
                 return this.getUserData();
-
-
             },
         }
-    }
+    },
 })
 </script>
 
- <style scoped>
+<style scoped>
 .my-card {
     width: 100%;
-    max-width: 300px;
+    max-width: 330px;
+    max-height: 600px;
+    height: 100%;
 }
 button {
     background-color: #2ea44f;
@@ -199,11 +312,25 @@ button {
 .center {
     margin: 0 auto;
     display: block;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 5px;
+    margin-top: 5px;
 }
 a {
     text-decoration: none;
+    color: white;
+}
+.table-container {
+    border: 1px solid black;
+    width: 100%;
+}
+td,
+th {
+    border: 1px solid black;
+    padding: 5px;
+    width: 5%;
+}
+tr:hover {
+    background-color: #2ea44f;
     color: white;
 }
 </style>
