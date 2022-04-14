@@ -40,7 +40,8 @@ export default defineComponent({
         return {
             options: [
                 { login: "nowaczewskimarcin", avatar_url: "https://avatars.githubusercontent.com/u/13852170?v=4" },
-                { login: "bmadzinski", avatar_url: "https://avatars.githubusercontent.com/u/3524577?v=4" }
+                { login: "bmadzinski", avatar_url: "https://avatars.githubusercontent.com/u/3524577?v=4" },
+                { login: "alex", avatar_url: "https://avatars.githubusercontent.com/u/772?v=4" }
             ],
             selectedValue: null,
         };

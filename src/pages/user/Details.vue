@@ -2,18 +2,17 @@
     <div class="container relative" style="padding: 4%;">
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card">
+                <q-btn
+                    @click="$router.replace('/FinderV3')"
+                    flat
+                    round
+                    dense
+                    bg-color="blue-10"
+                    icon="close"
+                />
                 <q-card-section>
                     <q-card-section horizontal>
                         <q-img class="col" :src="avatarUser" />
-                        <q-card-actions vertical>
-                            <q-btn
-                                flat
-                                round
-                                bg-color="white"
-                                icon="clear"
-                                @click="goToRepoDetails"
-                            ></q-btn>
-                        </q-card-actions>
                     </q-card-section>
 
                     <q-card-section>
@@ -24,9 +23,11 @@
                             <p>{{ bio }}</p>
                         </div>
                     </q-card-section>
+                </q-card-section>
 
+                <q-card-section>
                     <q-card-actions align="left">
-                        <q-btn @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
+                        <q-btn flat @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
                         <q-btn flat>
                             <a target="_blank" :href="linkToProfile">See on github</a>
                         </q-btn>
@@ -46,7 +47,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Number</th>
-                                                <!-- <th>Repository ID</th> -->
+                                                <th>Repository ID</th>
                                                 <!-- <th>URL</th> -->
                                                 <th>Repository name</th>
                                                 <!-- <th>Language</th>
@@ -57,7 +58,7 @@
                                         <tbody>
                                             <tr v-for="(repo, index) in repos" :key="id">
                                                 <td style="width:auto">{{ index + 1 }}</td>
-                                                <!-- <td>{{ repo.id }}</td> -->
+                                                <td>{{ repo.id }}</td>
                                                 <!-- <td>{{ repo.html_url }}</td> -->
 
                                                 <td>{{ repo.name }}</td>
@@ -68,7 +69,7 @@
                                                         color="blue-10"
                                                         icon-right="info"
                                                         label="More info"
-                                                        :to="{ name: 'repoDetails', props: { repoId: repo.id, login: login } }"
+                                                        :to="{ name: 'repoDetails', params: { repoName: repo.name, login: login } }"
                                                     />
                                                 </td>
                                             </tr>
@@ -253,9 +254,6 @@ export default defineComponent({
         toggleRepositoriesDetails() {
             this.showDialogRepo = true;
         },
-        backToSearch() {
-            this.$router.push({ name: '/FinderV3' })
-        },
         goToRepoDetails() {
             this.$router.push({ name: 'RepoDetailsView', props: { id: repo.id } })
         }
@@ -266,10 +264,7 @@ export default defineComponent({
             required: true,
             type: String,
         },
-        repoId: {
-            required: true,
-            type: Number,
-        }
+
     },
     watch: {
         login: {
