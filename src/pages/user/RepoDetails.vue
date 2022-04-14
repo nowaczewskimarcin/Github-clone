@@ -25,6 +25,7 @@
                         <img :src="userAvatar" />
                     </q-avatar>
                 </q-card-section>
+
             </q-card-section>
 
             <p>
@@ -36,6 +37,12 @@
                     Click to see this repo on GITHUB!
                 </a>
             </p>
+            <div clacc="space-between">
+
+                <q-btn @click="nextRepo">Next repo
+                </q-btn>
+
+            </div>
             <q-separator />
             <q-card-section class="q-pt-none text-subtitle2">
                 <p><span style="color: black;  font-weight: 700">ID: <span class="text-subtitle2 text-grey">{{
@@ -94,27 +101,6 @@ export default defineComponent({
     },
     methods: {
         getRepoData() {
-            //     const link = `https://api.github.com/users/${this.login}`;
-            //     // console.log(link)
-            //     axios.get(link).then((response) => {
-            //         this.userData = response.data;
-            //         this.avatarUser = response.data.avatar_url;
-            //         this.bio = response.data.bio;
-            //         this.linkToProfile = response.data.html_url;
-            //         this.linkToBlog = response.data.blog;
-            //         this.followers = response.data.followers;
-            //         this.following = response.data.following;
-            //         this.name = response.data.name;
-            //         this.email = response.data.email;
-            //         this.userId = response.data.id;
-            //         this.location = response.data.location;
-            //         this.publicRepos = response.data.public_repos;
-            //         this.hide = false;
-            //         this.hideRepo = false;
-            //         this.showDialogRepo = false;
-            //         // console.log(response.data)
-
-            // GET repo data 
             const linkRepo = `https://api.github.com/repos/${this.login}/${this.repoName}`;
             axios.get(linkRepo).then((response) => {
                 this.repos = response.data;
@@ -123,6 +109,10 @@ export default defineComponent({
                 this.linkToProfile = response.data.html_url;
                 console.log(response.data)
             });
+        },
+        ///// ???????
+        nextRepo() {
+            this.$router.push({ name: 'RepoDetails', params: { repoName: repo.name + 1, login: login } })
         },
     },
     props: {

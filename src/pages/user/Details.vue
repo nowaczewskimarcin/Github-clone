@@ -11,27 +11,32 @@
                     icon="close"
                 />
                 <q-card-section>
-                    <q-card-section horizontal>
-                        <q-img class="col" :src="avatarUser" />
-                    </q-card-section>
-
                     <q-card-section>
-                        <div class="text-h6">{{ name }}</div>
-                        <div class="text-subtitle1">login: {{ login }}</div>
-                        <div class="text-subtitle3">
-                            <p v-if="name">About {{ name }}:</p>
-                            <p>{{ bio }}</p>
-                        </div>
-                    </q-card-section>
-                </q-card-section>
+                        <q-card-section horizontal>
+                            <q-img class="col" :src="avatarUser" />
+                        </q-card-section>
 
-                <q-card-section>
-                    <q-card-actions align="left">
-                        <q-btn flat @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
-                        <q-btn flat>
-                            <a target="_blank" :href="linkToProfile">See on github</a>
-                        </q-btn>
-                    </q-card-actions>
+                        <q-card-section>
+                            <div class="text-h6">{{ name }}</div>
+                            <div class="text-subtitle1">login: {{ login }}</div>
+                            <div class="text-subtitle3">
+                                <p v-if="name">About {{ name }}:</p>
+                                <p>{{ bio }}</p>
+                            </div>
+                        </q-card-section>
+                    </q-card-section>
+
+                    <div class="row justify-center">
+                        <q-card-actions align="left">
+                            <q-btn
+                                flat
+                                @click="toggleDetails"
+                            >{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
+                            <q-btn flat>
+                                <a target="_blank" :href="linkToProfile">See on github</a>
+                            </q-btn>
+                        </q-card-actions>
+                    </div>
                 </q-card-section>
             </q-card>
 
@@ -48,10 +53,7 @@
                                             <tr>
                                                 <th>Number</th>
                                                 <th>Repository ID</th>
-                                                <!-- <th>URL</th> -->
                                                 <th>Repository name</th>
-                                                <!-- <th>Language</th>
-                                                <th>Owner</th>-->
                                                 <th>More details</th>
                                             </tr>
                                         </thead>
@@ -73,42 +75,6 @@
                                                     />
                                                 </td>
                                             </tr>
-                                            <q-dialog v-model="showDialogRepo" full-width :key="id">
-                                                <q-card>
-                                                    <q-toolbar>
-                                                        <q-avatar>
-                                                            <img
-                                                                src="https://cdn.quasar.dev/logo-v2/svg/logo.svg"
-                                                            />
-                                                        </q-avatar>
-
-                                                        <span
-                                                            class="text-weight-bold"
-                                                        >Repository name:</span>
-                                                    </q-toolbar>
-
-                                                    <q-card-section>
-                                                        <p>
-                                                            <span
-                                                                class="text-weight-bold"
-                                                            >Last update:</span>
-                                                        </p>
-                                                        <p>Last update:</p>
-                                                        <p>Last update:</p>
-                                                        <p>Last update:</p>
-                                                    </q-card-section>
-
-                                                    <q-btn
-                                                        flat
-                                                        round
-                                                        dense
-                                                        icon="close"
-                                                        v-close-popup
-                                                    />
-
-                                                    <q-card-section>Lorem ipsum dolor sit amet consectema, porro labore.</q-card-section>
-                                                </q-card>
-                                            </q-dialog>
                                         </tbody>
                                     </table>
                                 </div>
@@ -275,6 +241,7 @@ export default defineComponent({
             },
         }
     },
+
 })
 </script>
 
@@ -285,6 +252,7 @@ export default defineComponent({
     max-height: 600px;
     height: 100%;
 }
+
 button {
     background-color: #2ea44f;
     color: white;

@@ -1,16 +1,13 @@
 <template>
-    <div class="container relative" style="padding: 4%;">
-        <div class="q-pa-md row items-start q-gutter-md">
-            sdddddddddd Lorem ipsum dolor sit amet, consectet
-            ur adipisicing elit. A, expedita architecto dignissimos
-            qui praesentium adipisci exercitationem doloribus iust
-            o dolorum id esse iure velit dolor impedit. Sunt illo omnis
-            ea facilis. Lorem ipsum dolor sit amet consectetur adipisicing e
-            lit. Ea impedit officia recusandae laboriosam ex ad corporis quae, moll
-            itia provident reiciendis! Ad voluptatum facilis magnam saepe optio exercit
-            ationem dolor a quas.
+    <q-page padding>
+        <div class="column justify-center items-center">
+            <q-card class="my-card">
+                <img
+                    src="https://www.lego.com/cdn/cs/set/assets/blt13e6e2a178c38704/Spiderman-Sidekick-Tall-1.jpg?fit=crop&format=jpg&quality=80&width=800&height=600&dpr=1"
+                />
+            </q-card>
         </div>
-    </div>
+    </q-page>
 </template>
 
 <script>
@@ -22,6 +19,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.my-card {
+    width: 40%;
+}
+
 .element {
     display: inline-block;
     width: 600px;
