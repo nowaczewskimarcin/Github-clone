@@ -1,6 +1,6 @@
 <template>
     <div class="container relative" style="padding: 5%; margin-top: 10px;">
-        <q-select
+        <!-- <q-select
             v-model="selectedValue"
             :options="options"
             label="Standout"
@@ -27,7 +27,7 @@
                     <q-item-section>{{ scope.opt.login }}</q-item-section>
                 </q-item>
             </template>
-        </q-select>
+        </q-select>-->
         {{ inputValue }}
         {{ selectedItem }}
         <div style="margin-top: 10%">
@@ -46,7 +46,7 @@
             <div v-if="inputValue">
                 <ol>
                     <li
-                        @click="selectedItem(user)"
+                        @click="selectItem(user)"
                         v-for="(user, index) in filteredUser"
                         :key="`user-${index}`"
                     >
@@ -77,23 +77,24 @@ export default defineComponent({
             inputValue: "",
             userArray: [],
             isVisible: false,
-
-            userAvatar: "",
-            options: [
-                { login: "nowaczewskimarcin", avatar_url: "https://avatars.githubusercontent.com/u/13852170?v=4" },
-                { login: "bmadzinski", avatar_url: "https://avatars.githubusercontent.com/u/3524577?v=4" },
-                { login: "alex", avatar_url: "https://avatars.githubusercontent.com/u/772?v=4" }
-            ],
+            selectedItem: null,
+            // options: [
+            //     { login: "nowaczewskimarcin", avatar_url: "https://avatars.githubusercontent.com/u/13852170?v=4" },
+            //     { login: "bmadzinski", avatar_url: "https://avatars.githubusercontent.com/u/3524577?v=4" },
+            //     { login: "alex", avatar_url: "https://avatars.githubusercontent.com/u/772?v=4" }
+            // ],
             selectedValue: null,
         };
     },
     methods: {
-        onValueChange(aaaaa) {
-            this.$router.push({ name: 'userDetails', params: { login: this.selectedValue.login } })
-        },
-        selectedItem() {
+        // onValueChange(aaaaa) {
+        //     this.$router.push({ name: 'userDetails', params: { login: this.selectedValue.login } })
+        // },
+        selectItem(user) {
             this.selectedItem = user;
+            console.log(user)
             this.$router.push({ name: 'userDetails', params: { login: this.selectedItem.login } })
+
         },
     },
     computed: {
