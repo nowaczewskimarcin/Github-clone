@@ -28,7 +28,8 @@
                 </q-item>
             </template>
         </q-select>
-
+        {{ inputValue }}
+        {{ selectedItem }}
         <div style="margin-top: 10%">
             <q-input
                 v-model="inputValue"
@@ -40,27 +41,30 @@
                 outlined
                 debounce="500"
                 label="SEARCH USER FROM GITHUB API"
-                @input="getUsers"
             ></q-input>
-            {{ inputValue }}
-            <div>
+
+            <div v-if="inputValue">
                 <ol>
                     <li
                         @click="selectedItem(user)"
                         v-for="(user, index) in filteredUser"
                         :key="`user-${index}`"
                     >
-                        <q-item-section avatar>
-                            <q-avatar>
-                                <img :src="userAvatar" />
-                            </q-avatar>
-                            {{ user.login }} {{ user.avatar_url }}
-                        </q-item-section>
+                        <q-item clickable v-ripple>
+                            <q-item-section side>
+                                <q-avatar rounded size="65px">
+                                    <img :src="user.avatar_url" />
+                                    <!-- <q-badge floating color="teal">user</q-badge> -->
+                                </q-avatar>
+                            </q-item-section>
+                            <q-item-section>
+                                <q-item-label>{{ user.login }}</q-item-label>
+                            </q-item-section>
+                        </q-item>
                     </li>
                 </ol>
             </div>
         </div>
-        <span>{{ selectedItem.login }}</span>
     </div>
 </template>
 
@@ -74,7 +78,7 @@ export default defineComponent({
             inputValue: "",
             userArray: [],
             isVisible: false,
-            selectedItem: false,
+
             userAvatar: "",
             options: [
                 { login: "nowaczewskimarcin", avatar_url: "https://avatars.githubusercontent.com/u/13852170?v=4" },
@@ -85,24 +89,12 @@ export default defineComponent({
         };
     },
     methods: {
-
         onValueChange(aaaaa) {
             this.$router.push({ name: 'userDetails', params: { login: this.selectedValue.login } })
-
         },
-
-        getUsers() {
-            const link = `https://jsonplaceholder.typicode.com/users/${this.inputValue}`;
-            // https://api.github.com/users/${this.inputValue}
-            axios.get(link).then((response) => {
-                this.users = response.data;
-                this.avatarUser = response.data.avatar_url
-                console.log(response.data)
-
-            });
-        },
-        selectedItem(user) {
+        selectedItem() {
             this.selectedItem = user;
+            this.$router.push({ name: 'userDetails', params: { login: this.user.login } })
         },
     },
     computed: {
@@ -125,8 +117,13 @@ export default defineComponent({
                 console.log(json);
                 this.userArray = json;
             })
-    }
-
+    },
+    props: {
+        login: {
+            required: true,
+            type: String,
+        }
+    },
 
 })
 </script>  
