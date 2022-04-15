@@ -54,7 +54,6 @@
                             <q-item-section side>
                                 <q-avatar rounded size="65px">
                                     <img :src="user.avatar_url" />
-                                    <!-- <q-badge floating color="teal">user</q-badge> -->
                                 </q-avatar>
                             </q-item-section>
                             <q-item-section>
@@ -94,7 +93,7 @@ export default defineComponent({
         },
         selectedItem() {
             this.selectedItem = user;
-            this.$router.push({ name: 'userDetails', params: { login: this.user.login } })
+            this.$router.push({ name: 'userDetails', params: { login: this.selectedItem.login } })
         },
     },
     computed: {
