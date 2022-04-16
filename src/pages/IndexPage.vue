@@ -5,10 +5,10 @@
   >
     <div class="element">
       <h4 style="color: white;
-  font-weight: 900">Welcome to the Github clone!</h4>
+  font-weight: 900">Welcome to the Github finder!</h4>
       <h6
         style="color: #8193b2; font-weight: 900"
-      >In this page you can find users repositories, find directly user, read info about chosen one user and see Github rankings.</h6>
+      >In this page you can find any user on Github, find directly user info and more.</h6>
       <button class="button" onclick="window.location.href='#/Search'">Let's start!</button>
     </div>
     <div class="element">
