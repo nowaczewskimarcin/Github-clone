@@ -20,7 +20,7 @@
                             <div class="text-h6">{{ name }}</div>
                             <div class="text-subtitle1">login: {{ login }}</div>
                             <div class="text-subtitle3">
-                                <p v-if="name">About {{ name }}:</p>
+                                <p v-if="name">About: {{ name }}</p>
                                 <p>{{ bio }}</p>
                             </div>
                         </q-card-section>
@@ -172,11 +172,10 @@ export default defineComponent({
             lastUpdate: "",
             lastRepoUpdate: "",
             quantityRepos: "",
-            hide: true,
-            hideRepo: true,
+            hide: false,
+            hideRepo: false,
             showDialog: false,
             showDialogRepo: false,
-            nextRepos: "",
 
         })
     },
