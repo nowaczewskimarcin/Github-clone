@@ -1,9 +1,10 @@
 <template>
     <div class="container relative" style="padding: 4%;">
         <div class="q-pa-md row items-start q-gutter-md">
+            <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close"
+                style="float: right;" />
             <q-card class="my-card">
-                <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close"
-                    style="float: right;" />
+
                 <q-card-section>
                     <q-card-section>
                         <q-card-section horizontal>

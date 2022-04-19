@@ -30,8 +30,9 @@
                 </q-item>
             </template>
             </q-select>-->
-            <q-input v-model="inputValue" filled type="search" bg-color="teal-2" debounce="500"
-                label="SEARCH USER FROM GITHUB API"></q-input>
+            <q-input v-model="inputValue" filled type="search" textfield="grey-1" label-color="grey-1" standout="grey-1"
+                :input-style="{ color: 'white' }" bg-color="green-6" debounce="500" label="SEARCH USER FROM GITHUB API">
+            </q-input>
 
             <div v-if="inputValue">
                 <ul>
@@ -110,6 +111,12 @@ export default defineComponent({
 </script>  
 
 <style scoped>
+input,
+select,
+textarea {
+    color: white;
+}
+
 ul,
 li {
     list-style-type: none;
