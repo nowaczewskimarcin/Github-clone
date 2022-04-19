@@ -38,7 +38,7 @@
                             <q-card-section style="max-height: 50vh" class="scroll">
                                 <div class="table-container" v-if="repos">
                                     <table
-                                        style="table-layout: fixed; word-wrap:break-word; width: 100%; column-width: auto">
+                                        style="table-layout: fixed; word-wrap:break-word; width: 100%; column-width: fixed">
                                         <thead>
                                             <tr>
                                                 <th span="1" style="width: 10%;">Number</th>
@@ -53,7 +53,7 @@
                                                 <td>{{ repo.id }}</td>
                                                 <!-- <td>{{ repo.html_url }}</td> -->
 
-                                                <td>{{ repo.name }}</td>
+                                                <td style="text-align:center">{{ repo.name }}</td>
                                                 <!-- <td>{{ repo.language }}</td>
                                                 <td>{{ repo.owner.login }}</td>-->
                                                 <td>

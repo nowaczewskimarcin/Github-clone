@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-sm row items-start q-gutter-sm fixed-center">
+    <div class="q-pa-sm row items-start q-gutter-sm fixed-center" style="margin-top: 1%;">
 
         <q-card class="full-height" flat bordered>
             <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close"
@@ -10,9 +10,9 @@
                 <q-card-section class="q-pt-xs">
                     <div class="text-overline">Repository</div>
                     <div class="text-h5 q-mt-sm q-mb-xs" style="text-decoration: underline;">{{ repos.name }}</div>
-                    <div class="text-caption text-grey">
+                    <div class="text-body1 text-grey">
                         <p>
-                        <p> <span style="color: black;  font-weight: 700">User description:</span>
+                        <p> <span style="color: black;  font-weight: 800">User description:</span>
                             {{ repos.description }}</p>
                         </p>
                     </div>
@@ -37,12 +37,7 @@
                     Click to see this repo on GITHUB!
                 </a>
             </p>
-            <div clacc="space-between">
 
-                <q-btn @click="nextRepo">Next repo
-                </q-btn>
-
-            </div>
             <q-separator />
             <q-card-section class="q-pt-none text-subtitle2">
                 <p><span style="color: black;  font-weight: 700">ID: <span class="text-subtitle2 text-grey">{{
@@ -144,6 +139,7 @@ export default defineComponent({
 
     height: 100%;
 }
+
 button {
     background-color: #2ea44f;
     color: white;
@@ -155,33 +151,40 @@ button {
     text-align: center;
     text-decoration: none;
 }
+
 .button:hover {
     background-color: #2ea44ff3;
     color: black;
 }
+
 .button:active {
     transform: scale(1.05);
 }
+
 .center {
     margin: 0 auto;
     display: block;
     padding: 5px;
     margin-top: 5px;
 }
+
 a {
     text-decoration: none;
     color: black;
 }
+
 .table-container {
     border: 1px solid black;
     width: 100%;
 }
+
 td,
 th {
     border: 1px solid black;
     padding: 5px;
     width: 5%;
 }
+
 tr:hover {
     background-color: #2ea44f;
     color: white;
