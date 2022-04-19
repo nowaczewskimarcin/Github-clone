@@ -7,7 +7,7 @@ const routes = [
     children: [
       { path: '/', component: () => import('pages/IndexPage.vue') },
       { path: '/Search', component: () => import('pages/Search.vue') },
-      { path: '/FinderV3', component: () => import('pages/FinderV3.vue') },
+      { path: '/FinderV3', props: false, name: 'FinderV3', component: () => import('pages/FinderV3.vue') },
       { path: '/user/:login/details', props: true, name: 'userDetails', component: () => import('pages/user/Details.vue') },
       { path: '/user/:login/repos/:repoName', props: true, name: 'repoDetails', component: () => import('pages/user/RepoDetails.vue') },
       { path: '/Test', component: () => import('pages/test.vue') },

@@ -1,6 +1,8 @@
 <template>
-    <div class="container relative" style="padding: 5%; margin-top: 10px;">
-        <!-- <q-select
+    <q-page padding
+        style="background: linear-gradient(90deg, rgba(2,0,36,1) 3%, rgba(8,8,108,1) 18%, rgba(9,9,121,1) 85%, rgba(158,0,255,1) 117%); color: white; width: 100%;">
+        <div class="column center justify-center box" style="margin-top: 10%; width: 80%">
+            <!-- <q-select
             v-model="selectedValue"
             :options="options"
             label="Standout"
@@ -27,29 +29,13 @@
                     <q-item-section>{{ scope.opt.login }}</q-item-section>
                 </q-item>
             </template>
-        </q-select>-->
-        {{ inputValue }}
-        {{ selectedItem }}
-        <div style="margin-top: 10%">
-            <q-input
-                v-model="inputValue"
-                filled
-                type="search"
-                :options="options"
-                rounded
-                bg-color="teal-2"
-                outlined
-                debounce="500"
-                label="SEARCH USER FROM GITHUB API"
-            ></q-input>
+            </q-select>-->
+            <q-input v-model="inputValue" filled type="search" bg-color="teal-2" debounce="500"
+                label="SEARCH USER FROM GITHUB API"></q-input>
 
             <div v-if="inputValue">
-                <ol>
-                    <li
-                        @click="selectItem(user)"
-                        v-for="(user, index) in filteredUser"
-                        :key="`user-${index}`"
-                    >
+                <ul>
+                    <li @click="selectItem(user)" v-for="(user, index) in filteredUser" :key="`user-${index}`">
                         <q-item clickable v-ripple>
                             <q-item-section side>
                                 <q-avatar rounded size="65px">
@@ -61,10 +47,10 @@
                             </q-item-section>
                         </q-item>
                     </li>
-                </ol>
+                </ul>
             </div>
         </div>
-    </div>
+    </q-page>
 </template>
 
 <script>
@@ -78,11 +64,6 @@ export default defineComponent({
             userArray: [],
             isVisible: false,
             selectedItem: null,
-            // options: [
-            //     { login: "nowaczewskimarcin", avatar_url: "https://avatars.githubusercontent.com/u/13852170?v=4" },
-            //     { login: "bmadzinski", avatar_url: "https://avatars.githubusercontent.com/u/3524577?v=4" },
-            //     { login: "alex", avatar_url: "https://avatars.githubusercontent.com/u/772?v=4" }
-            // ],
             selectedValue: null,
         };
     },
@@ -94,7 +75,6 @@ export default defineComponent({
             this.selectedItem = user;
             console.log(user)
             this.$router.push({ name: 'userDetails', params: { login: this.selectedItem.login } })
-
         },
     },
     computed: {
@@ -127,3 +107,33 @@ export default defineComponent({
 
 })
 </script>  
+
+<style scoped>
+ul,
+li {
+    list-style-type: none;
+    list-style: none outside none;
+    margin: auto;
+    padding-left: 0;
+}
+
+.element {
+    display: inline-block;
+    width: 600px;
+    padding: 5px;
+    margin: 5px auto;
+    border-color: azure;
+}
+
+.center {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    width: 100%;
+    padding: 12px 20px;
+    margin: auto auto;
+    box-sizing: border-box;
+}
+</style>

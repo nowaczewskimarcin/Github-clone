@@ -9,7 +9,7 @@
       <h6
         style="color: #8193b2; font-weight: 900"
       >In this page you can find any user on Github, find directly user info and more.</h6>
-      <button class="button" onclick="window.location.href='#/Search'">Let's start!</button>
+      <button class="button" onclick="window.location.href='#/FinderV3'">Let's start!</button>
     </div>
     <div class="element">
       <img src="https://logodix.com/logo/64439.png" width="380" height="380" />

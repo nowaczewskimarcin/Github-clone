@@ -2,14 +2,7 @@
     <div class="container relative" style="padding: 4%;">
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card">
-                <q-btn
-                    @click="$router.replace('/FinderV3')"
-                    flat
-                    round
-                    dense
-                    bg-color="blue-10"
-                    icon="close"
-                />
+                <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close" />
                 <q-card-section>
                     <q-card-section>
                         <q-card-section horizontal>
@@ -28,10 +21,7 @@
 
                     <div class="row justify-center">
                         <q-card-actions align="left">
-                            <q-btn
-                                flat
-                                @click="toggleDetails"
-                            >{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
+                            <q-btn flat @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
                             <q-btn flat>
                                 <a target="_blank" :href="linkToProfile">See on github</a>
                             </q-btn>
@@ -46,9 +36,7 @@
                         <q-card>
                             <q-card-section style="max-height: 50vh" class="scroll">
                                 <div class="table-container" v-if="repos">
-                                    <table
-                                        style="table-layout: auto; word-wrap:break-word; column-width: auto;"
-                                    >
+                                    <table style="table-layout: auto; word-wrap:break-word; column-width: auto;">
                                         <thead>
                                             <tr>
                                                 <th>Number</th>
@@ -67,20 +55,15 @@
                                                 <!-- <td>{{ repo.language }}</td>
                                                 <td>{{ repo.owner.login }}</td>-->
                                                 <td>
-                                                    <q-btn
-                                                        color="blue-10"
-                                                        icon-right="info"
-                                                        label="More info"
-                                                        :to="{ name: 'repoDetails', params: { repoName: repo.name, login: login } }"
-                                                    />
+                                                    <q-btn color="blue-10" icon-right="info" label="More info"
+                                                        :to="{ name: 'repoDetails', params: { repoName: repo.name, login: login } }" />
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <q-card-actions
-                                    align="left"
-                                >All user public repositories: {{ publicRepos }}</q-card-actions>
+                                <q-card-actions align="left">All user public repositories: {{ publicRepos }}
+                                </q-card-actions>
                                 <q-card-actions align="right">
                                     <q-btn flat label="Exit" color v-close-popup />
                                 </q-card-actions>
@@ -129,8 +112,8 @@
                         {{ publicRepos }}
                     </p>
                     <p>
-                        <strong>Blog:</strong>
-                        {{ linkToBlog }}
+                        <strong>Blog: </strong>
+                        <a :href="linkToBlog" style="color:blue">{{ linkToBlog }}</a>
                     </p>
                     <p>
                         <strong>Last update:</strong>
@@ -138,7 +121,7 @@
                     <p>
                         <strong>Link to Github:</strong>
 
-                        <a :href="linkToProfile" text-color="green" target="_blank">Go to github</a>
+                        <a :href="linkToProfile" style="color:blue" target="_blank">Go to github</a>
                     </p>
                     <q-btn @click="toggleRepositories">Show Repositories</q-btn>
                 </q-card-section>
@@ -248,7 +231,7 @@ export default defineComponent({
 .my-card {
     width: 100%;
     max-width: 330px;
-    max-height: 600px;
+
     height: 100%;
 }
 
@@ -263,33 +246,40 @@ button {
     text-align: center;
     text-decoration: none;
 }
+
 .button:hover {
     background-color: #2ea44ff3;
     color: black;
 }
+
 .button:active {
     transform: scale(1.05);
 }
+
 .center {
     margin: 0 auto;
     display: block;
     padding: 5px;
     margin-top: 5px;
 }
+
 a {
     text-decoration: none;
     color: white;
 }
+
 .table-container {
     border: 1px solid black;
     width: 100%;
 }
+
 td,
 th {
     border: 1px solid black;
     padding: 5px;
     width: 5%;
 }
+
 tr:hover {
     background-color: #2ea44f;
     color: white;
