@@ -2,7 +2,8 @@
     <div class="container relative" style="padding: 4%;">
         <div class="q-pa-md row items-start q-gutter-md">
             <q-card class="my-card">
-                <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close" />
+                <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close"
+                    style="float: right;" />
                 <q-card-section>
                     <q-card-section>
                         <q-card-section horizontal>
@@ -13,7 +14,7 @@
                             <div class="text-h6">{{ name }}</div>
                             <div class="text-subtitle1">login: {{ login }}</div>
                             <div class="text-subtitle3">
-                                <p v-if="name">About: {{ name }}</p>
+                                <p v-if="name">About {{ name }}:</p>
                                 <p>{{ bio }}</p>
                             </div>
                         </q-card-section>
@@ -36,13 +37,14 @@
                         <q-card>
                             <q-card-section style="max-height: 50vh" class="scroll">
                                 <div class="table-container" v-if="repos">
-                                    <table style="table-layout: auto; word-wrap:break-word; column-width: auto;">
+                                    <table
+                                        style="table-layout: fixed; word-wrap:break-word; width: 100%; column-width: auto">
                                         <thead>
                                             <tr>
-                                                <th>Number</th>
-                                                <th>Repository ID</th>
-                                                <th>Repository name</th>
-                                                <th>More details</th>
+                                                <th span="1" style="width: 10%;">Number</th>
+                                                <th span="1" style="width: 35%;">Repository ID</th>
+                                                <th span="1" style="width: 45%;">Repository name</th>
+                                                <th span="1" style="width: 10%;">More details</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -112,8 +114,8 @@
                         {{ publicRepos }}
                     </p>
                     <p>
-                        <strong>Blog: </strong>
-                        <a :href="linkToBlog" style="color:blue">{{ linkToBlog }}</a>
+                        <strong>Blog:</strong>
+                        {{ linkToBlog }}
                     </p>
                     <p>
                         <strong>Last update:</strong>
@@ -121,7 +123,7 @@
                     <p>
                         <strong>Link to Github:</strong>
 
-                        <a :href="linkToProfile" style="color:blue" target="_blank">Go to github</a>
+                        <a :href="linkToProfile" text-color="green" target="_blank">Go to github</a>
                     </p>
                     <q-btn @click="toggleRepositories">Show Repositories</q-btn>
                 </q-card-section>
@@ -231,7 +233,7 @@ export default defineComponent({
 .my-card {
     width: 100%;
     max-width: 330px;
-
+    max-height: 600px;
     height: 100%;
 }
 
