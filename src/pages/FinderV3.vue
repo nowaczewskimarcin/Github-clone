@@ -93,7 +93,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        fetch("https://api.github.com/users")
+        fetch("https://api.github.com/users?per_page=100")
             .then(res => res.json())
             .then((json) => {
                 console.log(json);
