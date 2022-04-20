@@ -1,35 +1,36 @@
 <template>
     <div class="container relative" style="padding: 4%;">
         <div class="q-pa-md row items-start q-gutter-md">
-            <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close"
-                style="float: right;" />
+
             <q-card class="my-card">
-
+                <q-card-section horizontal>
+                    <q-img class="col" :src="avatarUser" />
+                </q-card-section>
                 <q-card-section>
-                    <q-card-section>
-                        <q-card-section horizontal>
-                            <q-img class="col" :src="avatarUser" />
-                        </q-card-section>
-
-                        <q-card-section>
-                            <div class="text-h6">{{ name }}</div>
-                            <div class="text-subtitle1">login: {{ login }}</div>
-                            <div class="text-subtitle3">
-                                <p v-if="name">About {{ name }}:</p>
-                                <p>{{ bio }}</p>
-                            </div>
-                        </q-card-section>
-                    </q-card-section>
-
-                    <div class="row justify-center">
-                        <q-card-actions align="left">
-                            <q-btn flat @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
-                            <q-btn flat>
-                                <a target="_blank" :href="linkToProfile">See on github</a>
-                            </q-btn>
-                        </q-card-actions>
+                    <div class="text-h6">{{ name }}</div>
+                    <div class="text-subtitle1">login: {{ login }}</div>
+                    <div class="text-subtitle3">
+                        <br>
+                        <p v-if="name">About {{ name }}:</p>
+                        <p v-if="bio">{{ bio }}</p>
+                        <p v-else="bio">About: user not add desription yet</p>
                     </div>
                 </q-card-section>
+
+
+                <div class="row justify-center">
+                    <q-card-actions align="left">
+                        <q-btn flat @click="toggleDetails">{{ hide ? 'Hide' : 'Show' }} More Info</q-btn>
+                        <q-btn flat>
+                            <a target="_blank" :href="linkToProfile">See on github</a>
+                        </q-btn>
+                        <q-btn @click="$router.replace('/FinderV3')" flat round dense bg-color="blue-10" icon="close"
+                            style="float: right;" />
+
+                    </q-card-actions>
+
+                </div>
+
             </q-card>
 
             <q-card>
@@ -79,14 +80,17 @@
             <q-card class="my-card details" v-show="hide">
                 <q-card-section>
                     <p>
+                        <q-icon color="positive" size="md" name="drive_file_rename_outline"> </q-icon>
                         <strong>Name:</strong>
                         {{ name }}
                     </p>
                     <p>
+                        <q-icon color="positive" size="md" name="badge"> </q-icon>
                         <strong>ID:</strong>
                         {{ userId }}
                     </p>
                     <p>
+                        <q-icon color="positive" size="md" name="face"> </q-icon>
                         <strong>Login:</strong>
                         {{ login }}
                     </p>
@@ -102,29 +106,35 @@
                     </q-badge>
                     <p></p>
                     <p>
+                        <q-icon color="positive" size="md" name="email"> </q-icon>
                         <strong>Email:</strong>
                         {{ email }}
                     </p>
                     <p>
+                        <q-icon color="positive" size="md" name="location_on"></q-icon>
                         <strong>Location:</strong>
                         {{ location }}
                     </p>
 
                     <p>
+                        <q-icon color="positive" size="md" name="public"> </q-icon>
                         <strong>Public repos:</strong>
                         {{ publicRepos }}
                     </p>
                     <p>
+                        <q-icon color="positive" size="md" name="article"> </q-icon>
                         <strong>Blog:</strong>
                         {{ linkToBlog }}
                     </p>
                     <p>
+                        <q-icon color="positive" size="md" name="update"> </q-icon>
                         <strong>Last update:</strong>
                     </p>
                     <p>
+                        <q-icon color="positive" size="md" name="link"> </q-icon>
                         <strong>Link to Github:</strong>
 
-                        <a :href="linkToProfile" text-color="green" target="_blank">Go to github</a>
+                        <a :href="linkToProfile" style="color: green" target="_blank">Go to github</a>
                     </p>
                     <q-btn @click="toggleRepositories">Show Repositories</q-btn>
                 </q-card-section>
