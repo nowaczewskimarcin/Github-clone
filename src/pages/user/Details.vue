@@ -77,7 +77,7 @@
                 </q-card-section>
             </q-card>
 
-            <q-card class="my-card details" v-show="hide">
+            <q-card class="my-card" v-show="hide">
                 <q-card-section>
                     <p>
                         <q-icon color="positive" size="md" name="drive_file_rename_outline"> </q-icon>
