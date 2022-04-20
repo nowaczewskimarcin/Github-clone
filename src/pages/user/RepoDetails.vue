@@ -2,7 +2,8 @@
     <div class="q-pa-sm row items-start q-gutter-sm fixed-center" style="margin-top: 1%;">
 
         <q-card class="full-height" flat bordered>
-            <q-btn @click="$router.replace('/FinderV3')" flat round dense icon="close" style="float: right;" />
+            <q-btn @click="$router.push({ name: 'userDetails', params: { login: this.login } })" flat round dense
+                icon="close" style="float: right;" />
 
             <q-card-section horizontal style="display: flex; justify-content: space-between">
 
