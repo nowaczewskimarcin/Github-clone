@@ -1,11 +1,37 @@
 <template>
-    <q-page padding>
-        <div class="column justify-center items-center">
-            <q-card class="my-card">
-                <img
-                    src="https://www.lego.com/cdn/cs/set/assets/blt13e6e2a178c38704/Spiderman-Sidekick-Tall-1.jpg?fit=crop&format=jpg&quality=80&width=800&height=600&dpr=1" />
+    <q-page padding
+        style="background: linear-gradient(90deg, rgba(2,0,36,1) 3%, rgba(8,8,108,1) 18%, rgba(9,9,121,1) 85%, rgba(158,0,255,1) 117%);">
+        <div class="column justify-center items-center q-pa-xl">
+
+
+            <q-card flat bordered class=" my-card" style="background-color: #8193b2;">
+                <q-card-section>
+                    <div class="text-h6">About</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">
+                    In this app you can find in 100 first (by ID) users from Github, page use Github API. <br>
+                    After inicial page and click button, user go to page where is input to enter searching user. <br>
+                    When user entered letters the results is displayed under searching bar. <br>
+                    This page was made for the purpose of training and learning. <br>
+                </q-card-section>
+
+                <q-separator inset />
+
+                <q-card-section>
+                    <p>Used technologies:</p>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>Vue</li>
+                        <li>Quasar</li>
+                        <li>REST API</li>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                    </ul>
+                </q-card-section>
             </q-card>
         </div>
+
     </q-page>
 </template>
 
