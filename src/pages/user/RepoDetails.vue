@@ -1,7 +1,7 @@
 <template>
     <div class="q-pa-sm row items-start q-gutter-sm fixed-center" style="margin-top: 1%;">
 
-        <q-card class="full-height" flat bordered>
+        <q-card class="full-height bg-grey-3" flat bordered>
             <q-btn @click="$router.push({ name: 'userDetails', params: { login: this.login } })" flat round dense
                 icon="close" style="float: right;" />
 
@@ -12,8 +12,10 @@
                     <div class="text-h5 q-mt-sm q-mb-xs" style="text-decoration: underline;">{{ repos.name }}</div>
                     <div class="text-body1 text-grey">
                         <p>
-                        <p> <span style="color: black;  font-weight: 800">User description:</span>
+                        <p v-if="repos.description"> <span style="color: black;  font-weight: 800">User
+                                description:</span>
                             {{ repos.description }}</p>
+                        <p v-else="repos.description"> User didn't add description yet.</p>
                         </p>
                     </div>
                     <q-separator color="green" inset />
